@@ -1,0 +1,24 @@
+{
+  "name": "convert-time-24hr",
+  "version": "1.0.0",
+  "description": "convert 24 hours time format to 12 hour and vice versa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Usama4745/convert-time-24hr.git"
+  },
+  "keywords": [
+    "converttime",
+    "24hoursto12hours",
+    "12hourto24hour"
+  ],
+  "author": "Usama Ahmed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Usama4745/convert-time-24hr/issues"
+  },
+  "homepage": "https://github.com/Usama4745/convert-time-24hr#readme"
+}
