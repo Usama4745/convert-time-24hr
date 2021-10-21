@@ -36,6 +36,9 @@ module.exports={
         if(amorpm.toUpperCase()==='PM'){
             timeIn24hrs=hours+12;
         }
+        else if(amorpm.toUpperCase()==='AM' && hours===12){
+            timeIn24hrs=00;
+        }
         else{
             timeIn24hrs=hours;
         }
