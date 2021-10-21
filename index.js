@@ -13,7 +13,7 @@ module.exports={
             if (typeof seconds === 'string') {
                 throw new Error("seconds should be integer value");
             }
-            if(hours>=12 || hours<1){
+            if(hours>12 || hours<1){
                 throw new Error("hours should be between or equal to 1 and 12");
             }
             if(minutes>60 || minutes<0){
@@ -74,6 +74,9 @@ module.exports={
         if(hours>12){
             hours=hours-12;
             return hours+':'+minutes+':'+seconds+' PM';
+        }
+        else if(hours==0){
+            return 12+':'+minutes+':'+seconds+' AM';
         }
         else{
             return hours+':'+minutes+':'+seconds+' AM';
