@@ -33,7 +33,10 @@ module.exports={
 
 
         let timeIn24hrs=0;
-        if(amorpm.toUpperCase()==='PM'){
+        if(amorpm.toUpperCase()==='PM' && hours===12){
+            timeIn24hrs=12;
+        }
+        else if(amorpm.toUpperCase()==='PM'){
             timeIn24hrs=hours+12;
         }
         else if(amorpm.toUpperCase()==='AM' && hours===12){
@@ -42,7 +45,7 @@ module.exports={
         else{
             timeIn24hrs=hours;
         }
-        return timeIn24hrs+':'+minutes+':'+seconds;
+        return ('0' + timeIn24hrs).slice(-2)+':'+minutes+':'+seconds;
     },
     convertTimeTo12hrs:(hours,minutes,seconds)=>{
     
@@ -58,7 +61,7 @@ module.exports={
             if (typeof seconds === 'string') {
                 throw new Error("seconds should be integer value");
             }
-            if(hours>24 || hours<0){
+            if(hours>23 || hours<0){
                 throw new Error("hours should be between 0 and 24");
             }
             if(minutes>60 || minutes<0){
@@ -74,6 +77,9 @@ module.exports={
         }
         
 
+        if(hours==12){
+            return 12+':'+minutes+':'+seconds+' PM';
+        }
         if(hours>12){
             hours=hours-12;
             return hours+':'+minutes+':'+seconds+' PM';
