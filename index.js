@@ -20,47 +20,46 @@ function verifyInput(hours, minutes, seconds, to12hrs) {
 }
 
 module.exports = {
+	convertTimeTo24hrs: (hours, minutes, seconds, amorpm) => {
+		try {
+			verifyInput(hours, minutes, seconds, false);
+			if (typeof amorpm !== "string") {
+				throw new Error("amorpm should be string");
+			}
+			if (amorpm.toUpperCase() !== "AM" && amorpm.toUpperCase() !== "PM") {
+				throw new Error("amorpm should be AM or PM");
+			}
+		} catch (e) {
+			console.error(e, e.stack);
+		}
 
-    convertTimeTo24hrsAsString: (hours, minutes, seconds, amorpm) => {
+		return (
+			(
+				"0" +
+				(amorpm.toUpperCase() === "PM"
+					? (hours + 12) % 12 || hours
+					: hours % 12)
+			).slice(-2) +
+			":" +
+			("0" + minutes).slice(-2) +
+			":" +
+			("0" + seconds).slice(-2)
+		);
+	},
 
-        try {
-            verifyInput(hours, minutes, seconds, false);
-            if (typeof amorpm !== "string") {
-                throw new Error("amorpm should be string");
-            }
-            if (amorpm.toUpperCase() !== "AM" && amorpm.toUpperCase() !== "PM") {
-                throw new Error("amorpm should be AM or PM");
-            }
-        } catch (e) {
-            console.error(e, e.stack);
-        }
-    
-        return (
-            (
-                "0" +
-                (amorpm.toUpperCase() === "PM" ? (hours + 12) % 12 || hours : hours % 12)
-            ).slice(-2) +
-            ":" +
-            ("0" + minutes).slice(-2) +
-            ":" +
-            ("0" + seconds).slice(-2)
-        );
-    },
-
-    convertTimeTo12hrsAsString: (hours, minutes, seconds) => {
-
-        try {
-            verifyInput(hours, minutes, seconds, true);
-        } catch (e) {
-            console.error(e, e.stack);
-        }
-        return (
-            ("0" + (hours % 12 || 12)).slice(-2) +
-            ":" +
-            ("0" + minutes).slice(-2) +
-            ":" +
-            ("0" + seconds).slice(-2) +
-            (hours >= 12 ? " PM" : " AM")
-        );
-    },
-}
+	convertTimeTo12hrs: (hours, minutes, seconds) => {
+		try {
+			verifyInput(hours, minutes, seconds, true);
+		} catch (e) {
+			console.error(e, e.stack);
+		}
+		return (
+			("0" + (hours % 12 || 12)).slice(-2) +
+			":" +
+			("0" + minutes).slice(-2) +
+			":" +
+			("0" + seconds).slice(-2) +
+			(hours >= 12 ? " PM" : " AM")
+		);
+	}
+};
