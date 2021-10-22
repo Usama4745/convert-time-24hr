@@ -1,6 +1,6 @@
 {
   "name": "convert-time-24hr",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "convert 24 hours time format to 12 hour and vice versa",
   "main": "index.js",
   "scripts": {
