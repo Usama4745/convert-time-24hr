@@ -16,10 +16,10 @@ module.exports={
             if(hours>12 || hours<1 || hours===undefined){
                 throw new Error("hours should be between or equal to 1 and 12");
             }
-            if(minutes>60 || minutes<0 || minutes===undefined){
+            if(minutes>=60 || minutes<0 || minutes===undefined){
                 throw new Error("minutes should be between 0 and 60");
             }
-            if(seconds>60 || seconds<0 || seconds===undefined){
+            if(seconds>=60 || seconds<0 || seconds===undefined){
                 throw new Error("seconds should be between 0 and 60");
             }
             if(amorpm.toUpperCase()!=="AM" && amorpm.toUpperCase()!=="PM"){
@@ -64,10 +64,10 @@ module.exports={
             if(hours>23 || hours<0 || hours===undefined){
                 throw new Error("hours should be between 0 and 24");
             }
-            if(minutes>60 || minutes<0  || minutes===undefined){
+            if(minutes>=60 || minutes<0  || minutes===undefined){
                 throw new Error("minutes should be between 0 and 60");
             }
-            if(seconds>60 || seconds<0  || seconds===undefined){
+            if(seconds>=60 || seconds<0  || seconds===undefined){
                 throw new Error("seconds should be between 0 and 60");
             }
         }
