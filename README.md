@@ -5,6 +5,12 @@ Contributions are welcome
 
 ## How to use
 
+install
+
+```
+npm i convert-time-24hr
+```
+
 ```
 const timeFormat=require("convert-time-24hr");
 ```
