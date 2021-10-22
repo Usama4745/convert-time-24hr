@@ -1,6 +1,9 @@
-# Plugin used to convert time format from 24 hours to 12 hours and vice versa
+# Convert 24h -> 12h
+🕒 This is a plugin used to convert time format from 24 hours to 12 hours and vice versa
 
-## Usage
+Contribuitions are welcome
+
+## How to use
 
 ```
 const timeFormat=require("convert-time-24hr");
