@@ -1,28 +1,34 @@
 module.exports = {
     convertTimeTo24hrs: (hours, minutes, seconds, amorpm) => {
+
+
         try {
-            if (typeof hours === 'string') {
+            if (typeof hours !== 'number') {
                 throw new Error("hours should be integer value");
             }
-            if (typeof minutes === 'string') {
+            if (typeof minutes !== 'number') {
                 throw new Error("minutes should be integer value");
             }
-            if (typeof seconds === 'string') {
+            if (typeof seconds !== 'number') {
                 throw new Error("seconds should be integer value");
             }
-            if (hours > 12 || hours < 1 || hours === undefined) {
+            if (typeof amorpm !== 'string') {
+                throw new Error("amorpm should be string");
+            }
+            if (hours > 12 || hours < 1) {
                 throw new Error("hours should be between or equal to 1 and 12");
             }
-            if (minutes > 60 || minutes < 0 || minutes === undefined) {
+            if (minutes >= 60 || minutes < 0) {
                 throw new Error("minutes should be between 0 and 60");
             }
-            if (seconds > 60 || seconds < 0 || seconds === undefined) {
+            if (seconds >= 60 || seconds < 0) {
                 throw new Error("seconds should be between 0 and 60");
             }
             if (amorpm.toUpperCase() !== "AM" && amorpm.toUpperCase() !== "PM") {
                 throw new Error("amorpm should be AM or PM");
             }
-        } catch (e) {
+        }
+        catch (e) {
             console.error(e, e.stack);
         }
 
@@ -30,52 +36,58 @@ module.exports = {
         let timeIn24hrs = 0;
         if (amorpm.toUpperCase() === 'PM' && hours === 12) {
             timeIn24hrs = 12;
-        } else if (amorpm.toUpperCase() === 'PM') {
+        }
+        else if (amorpm.toUpperCase() === 'PM') {
             timeIn24hrs = hours + 12;
-        } else if (amorpm.toUpperCase() === 'AM' && hours === 12) {
+        }
+        else if (amorpm.toUpperCase() === 'AM' && hours === 12) {
             timeIn24hrs = 00;
-        } else {
+        }
+        else {
             timeIn24hrs = hours;
         }
-        return ('0' + timeIn24hrs).slice(-2) + ':' + minutes + ':' + seconds;
+        return ('0' + timeIn24hrs).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
     },
     convertTimeTo12hrs: (hours, minutes, seconds) => {
 
 
         try {
-            if (typeof hours === 'string') {
+            if (typeof hours !== 'number') {
                 throw new Error("hours should be integer value");
             }
-            if (typeof minutes === 'string') {
+            if (typeof minutes !== 'number') {
                 throw new Error("minutes should be integer value");
             }
-            if (typeof seconds === 'string') {
+            if (typeof seconds !== 'number') {
                 throw new Error("seconds should be integer value");
             }
-            if (hours > 23 || hours < 0 || hours === undefined) {
+            if (hours > 23 || hours < 0) {
                 throw new Error("hours should be between 0 and 24");
             }
-            if (minutes > 60 || minutes < 0 || minutes === undefined) {
+            if (minutes >= 60 || minutes < 0) {
                 throw new Error("minutes should be between 0 and 60");
             }
-            if (seconds > 60 || seconds < 0 || seconds === undefined) {
+            if (seconds >= 60 || seconds < 0) {
                 throw new Error("seconds should be between 0 and 60");
             }
-        } catch (e) {
+        }
+        catch (e) {
             console.error(e, e.stack);
         }
 
 
-        if (hours === 12) {
-            return 12 + ':' + minutes + ':' + seconds + ' PM';
+        if (hours == 12) {
+            return 12 + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2) + ' PM';
         }
         if (hours > 12) {
             hours = hours - 12;
-            return hours + ':' + minutes + ':' + seconds + ' PM';
-        } else if (hours === 0) {
-            return 12 + ':' + minutes + ':' + seconds + ' AM';
-        } else {
-            return hours + ':' + minutes + ':' + seconds + ' AM';
+            return hours + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2) + ' PM';
+        }
+        else if (hours == 0) {
+            return 12 + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2) + ' AM';
+        }
+        else {
+            return hours + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2) + ' AM';
         }
     }
 }
