@@ -11,6 +11,8 @@ install
 npm i convert-time-24hr
 ```
 
+Use
+
 ```
 const timeFormat=require("convert-time-24hr");
 ```
