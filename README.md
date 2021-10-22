@@ -1,7 +1,7 @@
 # Convert 24h -> 12h
 🕒 This is a plugin used to convert time format from 24 hours to 12 hours and vice versa
 
-Contribuitions are welcome
+Contributions are welcome
 
 ## How to use
 
