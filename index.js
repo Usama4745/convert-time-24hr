@@ -45,7 +45,7 @@ module.exports={
         else{
             timeIn24hrs=hours;
         }
-        return ('0' + timeIn24hrs).slice(-2)+':'+minutes+':'+seconds;
+        return ('0' + timeIn24hrs).slice(-2)+':'+('0' + minutes).slice(-2)+':'+('0' + seconds).slice(-2);
     },
     convertTimeTo12hrs:(hours,minutes,seconds)=>{
     
@@ -78,17 +78,17 @@ module.exports={
         
 
         if(hours==12){
-            return 12+':'+minutes+':'+seconds+' PM';
+            return 12+':'+('0' + minutes).slice(-2)+':'+('0' + seconds).slice(-2)+' PM';
         }
         if(hours>12){
             hours=hours-12;
-            return hours+':'+minutes+':'+seconds+' PM';
+            return hours+':'+('0' + minutes).slice(-2)+':'+('0' + seconds).slice(-2)+' PM';
         }
         else if(hours==0){
-            return 12+':'+minutes+':'+seconds+' AM';
+            return 12+':'+('0' + minutes).slice(-2)+':'+('0' + seconds).slice(-2)+' AM';
         }
         else{
-            return hours+':'+minutes+':'+seconds+' AM';
+            return hours+':'+('0' + minutes).slice(-2)+':'+('0' + seconds).slice(-2)+' AM';
         }
     }
 }
