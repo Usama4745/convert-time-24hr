@@ -8,8 +8,8 @@ function verifyInput(hours, minutes, seconds, to12hrs) {
 	if (typeof seconds !== "number") {
 		throw new Error("seconds should be integer value");
 	}
-	if (hours > 12 + 12 * to12hrs || hours < 1 - to12hrs) {
-		throw new Error("hours should be between or equal to 1 and 12");
+	if (hours > 12 + 11 * to12hrs || hours < 1 - to12hrs) {
+		throw to12hrs ? new Error("hours should be between or equal to 0 and 23") : new Error("hours should be between or equal to 1 and 12");
 	}
 	if (minutes >= 60 || minutes < 0) {
 		throw new Error("minutes should be between 0 and 60");
