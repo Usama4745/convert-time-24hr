@@ -31,6 +31,7 @@ module.exports = {
 			}
 		} catch (e) {
 			console.error(e, e.stack);
+            return 0;
 		}
 
 		return (
@@ -52,6 +53,7 @@ module.exports = {
 			verifyInput(hours, minutes, seconds, true);
 		} catch (e) {
 			console.error(e, e.stack);
+            return 0;
 		}
 		return (
 			("0" + (hours % 12 || 12)).slice(-2) +
