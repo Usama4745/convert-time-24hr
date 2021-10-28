@@ -9,11 +9,11 @@ describe('convertTimeTo24hrs', () =>{
     })
     it("Should convert 12 hours time to 24Hour",()=>{
         const time=convertTimeTo24hrs(8,45,51,"am");
-        assert.equal()time,"08:45:51";
+        assert.equal(time,"08:45:51");
     })
     it("Should convert 12 hours time to 24Hour",()=>{
         const time=convertTimeTo24hrs(12,45,51,"am");
-        assert.equal()time,"00:45:51";
+        assert.equal(time,"00:45:51");
     })
     
     
